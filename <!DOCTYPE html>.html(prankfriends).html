@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>System Scan In Progress...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Full-screen terminal effect */
+    .terminal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      white-space: pre;
+      color: #00ff00;
+      opacity: 0.9;
+      font-size: 14px;
+      pointer-events: none;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    /* Warning pop-up box */
+    .warning {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: red;
+      color: white;
+      padding: 20px;
+      font-size: 18px;
+      border: 3px solid white;
+      width: 80%;
+      max-width: 500px;
+      z-index: 9999;
+      display: none;
+      box-shadow: 0 0 20px red;
+      text-align: center;
+    }
+
+    /* Style for heading and text */
+    h1, p {
+      text-align: center;
+      margin-top: 100px;
+      z-index: 1;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Running deep system scan...</h1>
+  <p>Please do not close this window.</p>
+
+  <!-- Warning pop-ups -->
+  <div class="warning" id="w1">⚠️ Critical Warning:<br>Suspicious activity detected on your device!</div>
+  <div class="warning" id="w2">🛑 Security Breach:<br>Your device has been compromised. System integrity is damaged.</div>
+  <div class="warning" id="w3">💀 ALERT:<br>Unauthorized access granted to a remote developer. Camera and microphone exposed.</div>
+  <div class="warning" id="w4">📡 Final Notice:<br>Your phone is now being monitored. Contact support immediately.</div>
+
+  <!-- Full-screen terminal -->
+  <div class="terminal" id="terminal"></div>
+
+  <script>
+    // Green code animation for full-screen terminal
+    const terminal = document.getElementById("terminal");
+    const codeLines = [
+      "[root@server]# Initializing scan...",
+      "[+] Detected malware: Trojan.X323",
+      "[!] Injecting reverse shell...",
+      "[+] Access granted to /system/root",
+      "[!] Uploading user data to remote server...",
+      "[+] Keylogger activated",
+      "[*] Accessing front camera...",
+      "[*] Scanning storage...",
+      "[!] WARNING: System compromised",
+      "[*] IP traced: 192.168.0.56",
+      "[!] Deploying payload...",
+      "[✓] Operation completed"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      terminal.textContent += codeLines[i % codeLines.length] + "\n";
+      terminal.scrollTop = terminal.scrollHeight; // Scroll to bottom
+      i++;
+    }, 300);
+
+    // Warning popups appear one by one
+    setTimeout(() => document.getElementById('w1').style.display = 'block', 3000);
+    setTimeout(() => document.getElementById('w2').style.display = 'block', 7000);
+    setTimeout(() => document.getElementById('w3').style.display = 'block', 11000);
+    setTimeout(() => document.getElementById('w4').style.display = 'block', 15000);
+  </script>
+</body>
+</html>
+
+
+
